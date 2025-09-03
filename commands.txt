@@ -1,0 +1,110 @@
+1  docker ps
+    2  sudo apt update -y
+    3  sudo apt install fontconfig openjdk-17-jre -y
+    4  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    5  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+    6  sudo apt-get update -y
+    7  sudo apt-get install jenkins -y
+    8  cat /var/lib/jenkins/secrets/initialAdminPassword
+    9  sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+   10  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+   11  sudo apt install unzip
+   12  unzip awscliv2.zip
+   13  sudo ./aws/install
+   14  sudo apt update
+   15  sudo apt-get install docker.io -y
+   16  sudo usermod -aG docker ubuntu && newgrp docker
+   17  sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+   18  wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+   19  echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+   20  sudo apt-get update -y
+   21  sudo apt-get install trivy -y
+   22  trivy -v
+   23  docker run -itd --name SonarQube-Server -p 9000:9000 sonarqube:lts-community
+   24  aws configur
+   25  aws configure
+   26  curl -o kubectl https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/kubectl
+   27  chmod +x ./kubectl
+   28  sudo mv ./kubectl /usr/local/bin
+   29  kubectl version --short --client
+   30  curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+   31  sudo mv /tmp/eksctl /usr/local/bin
+   32  eksctl version
+   33  eksctl create cluster --name=wanderlust                     --region=ap-south-01                     --version=1.30                     --without-nodegroup
+   34  sudo eksctl create cluster --name=wanderlust                     --region=ap-south-01                     --version=1.30                     --without-nodegroup
+   35  sudo eksctl create cluster --name=wanderlust                     --region=ap-south-01                     --version=1.30                     --without-nodegroup
+   36  aws configure
+   37  eksctl create cluster --name=wanderlust   --region=ap-south-1   --version=1.30   --without-nodegroup
+   38  eksctl utils associate-iam-oidc-provider   --region ap-south-01   --cluster wanderlust   --approve
+   39  eksctl delete cluster --name=wanderlust --region=ap-south-01
+   40  aws sts get-caller-identity
+   41  aws configure
+   42  eksctl utils associate-iam-oidc-provider   --region ap-south-01   --cluster wanderlust   --approve
+   43  eksctl delete cluster --name=wanderlust --region=ap-south-01
+   44  eksctl delete cluster --name=wanderlust --region=ap-south-1
+   45  eksctl create cluster   --name wanderlust   --region ap-south-1   --version 1.30   --nodegroup-name standard-workers   --node-type t3.medium   --nodes 2   --nodes-min 2   --nodes-max 3   --managed
+   46  kubectl get nodes
+   47  eksctl delete cluster --name wanderlust --region ap-south-1
+   48  eksctl create cluster --name=wanderlust   --region=ap-south-1   --version=1.30   --without-nodegroup
+   49  eksctl utils associate-iam-oidc-provider   --region ap-south-1   --cluster wanderlust   --approve
+   50  eksctl create nodegroup --cluster=wanderlust                      --region=us-east-2                      --name=wanderlust                      --node-type=t2.large                      --nodes=2                      --nodes-min=2                      --nodes-max=2                      --node-volume-size=29                      --ssh-access                      --ssh-public-key=eks-nodegroup-key 
+   51  eksctl create nodegroup   --cluster=wanderlust   --region=ap-south-1   --name=wanderlust-workers   --node-type=t2.large   --nodes=2   --nodes-min=2   --nodes-max=2   --node-volume-size=29   --ssh-access   --ssh-public-key=eks-nodegroup-key
+   52  kubectl get nodes
+   53  kubectl create namespace argocd
+   54  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+   55  watch kubectl get pods -n argocd
+   56  sudo curl --silent --location -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.4.7/argocd-linux-amd64
+   57  sudo chmod +x /usr/local/bin/argocd
+   58  kubectl get svc -n argocd
+   59  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
+   60  kubectl get svc -n argocd
+   61  kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+   62  git clone https://github.com/lokesh-dadhich/Wanderlust-Mega-Project.git
+   63  ls
+   64  cd Wanderlust-Mega-Project/
+   65  ls
+   66  cd backend/
+   67  ls
+   68  sudo vi .env.docker 
+   69  ls
+   70  cd ..
+   71  cd Automations/
+   72  ls
+   73  sudo vi updatebackendnew.sh 
+   74  sudo vi updatefrontendnew.sh 
+   75  ./updatebackendnew.sh 
+   76  ./updatefrontendnew.sh 
+   77  sudo apt install git
+   78  argocd login
+   79  argocd login 43.204.115.141:3014 --username admin
+   80  kubectl -n argocd get svc argocd-server
+   81  argocd login 43.204.115.141:3014 --username admin
+   82  argocd login 43.204.115.141:3014 --username admin --insecure
+   83  argocd login 43.204.115.141:31559 --username admin --insecure
+   84  argocd cluster list
+   85  kube config get contexts
+   86  kubectl config get contexts
+   87  kubectl config get-contexts
+   88  argocd cluster add mega-project@wanderlust.ap-south-1.eksctl.io --name wanderlust-cluster
+   89  cd
+   90  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+   91  chmod 700 get_helm.sh
+   92  ./get_helm.sh
+   93  helm repo add stable https://charts.helm.sh/stable
+   94  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   95  helm repo list
+   96  kubectl create namespace prometheus
+   97  kubectl get ns
+   98  helm install stable prometheus-community/kube-prometheus-stack -n prometheus
+   99  kubectl get pods -n prometheus
+  100  kubectl get svc -n prometheus
+  101  kubectl edit svc stable-kube-prometheus-sta-prometheus -n prometheus
+  102  kubectl get svc -n prometheus
+  103  kubectl edit svc stable-grafana -n prometheus
+  104  kubectl get svc -n prometheus
+  105  kubectl get secret --namespace prometheus stable-grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+  106  sudo usermod -aG docker jenkins
+  107  sudo systemctl restart jenkins
+  108  sudo su - jenkins
+  109  docker ps
+  110  history
